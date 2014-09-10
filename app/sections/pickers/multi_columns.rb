@@ -10,7 +10,7 @@ class PickersMultiColumnsSection < Prime::Section
   end
 
   def numberOfComponentsInPickerView(pickerView)
-    4
+    component_options.count
   end
 
   def pickerView(pickerView, numberOfRowsInComponent: component)
@@ -31,9 +31,12 @@ class PickersMultiColumnsSection < Prime::Section
   def component_options
     [
       (0..9).to_a.map{|i| i.to_s},
-      (0..99).to_a.map{|i| i.to_s},
+      (0..9).to_a.map{|i| i.to_s},
+      (0..9).to_a.map{|i| i.to_s},
+      (0..99).to_a.map{|i| format('%02d', i.to_s)},
       ('A'..'Z').to_a,
       ('a'..'z').to_a
     ]
   end
+
 end
